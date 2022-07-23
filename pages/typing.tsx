@@ -10,6 +10,7 @@ const TypingPage: NextPage = () => {
       </div>
       <div className="flex justify-center">
         <Keyboard />
+        
       </div>
     </div>
   );
