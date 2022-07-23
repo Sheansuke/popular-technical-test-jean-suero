@@ -8,6 +8,7 @@
       "@organism/*": ["components/organism/*"],
       "@interfaces/*": ["interfaces/*"],
       "@hooks/*": ["hooks/*"],
+      "@data/*": ["data/*"],
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
