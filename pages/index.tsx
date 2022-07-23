@@ -1,10 +1,11 @@
 import type { NextPage } from "next";
 import { Keyboard } from "@organism/Keyboard";
-import { ResultBoard } from "@molecules/ResultBoard";
+import ConfigTyping from "@molecules/ConfigTyping";
 
 const Home: NextPage = () => {
   return (
     <>
+      <ConfigTyping />
       <Keyboard />
     </>
   );

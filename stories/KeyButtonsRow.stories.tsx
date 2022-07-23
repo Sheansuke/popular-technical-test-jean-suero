@@ -16,5 +16,5 @@ const Template: ComponentStory<typeof KeyButtonsRow> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-    listKeys: ["q", "w"]
+    listKeys: ["p", "o", "p", "u", "l", "a", "r"]
 };

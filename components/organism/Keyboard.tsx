@@ -2,11 +2,8 @@ import { KeyType } from "@interfaces/KeyType";
 import { KeyButtonsRow } from "@molecules/KeyButtonsRow";
 import React, { FC, useState, useEffect } from "react";
 
-interface KeyboardProps {
-  // name?: string;
-}
 
-export const Keyboard: FC<KeyboardProps> = () => {
+export const Keyboard: FC = () => {
   const [keyPressed, setKeyPressed] = useState<string>();
   const [capsLockActive, setCapsLockActive] = useState<boolean>(false);
 
