@@ -29,9 +29,9 @@ export const KeyButton: FC<KeyButtonProps> = ({
   return (
     <button
       className={tw(
-        "btn btn-primary text-xl m-1 border-b-4  border-primary-focus ",
+        " text-xl m-1  kbd",
         isCapsLock ? "uppercase" : "lowercase",
-        keyPressed === keyAlphabet ? "btn-secondary" : " ",
+        keyPressed === keyAlphabet ? "btn-primary" : " ",
 
         tailwindClass
       )}
