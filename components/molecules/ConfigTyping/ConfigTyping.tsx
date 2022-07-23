@@ -29,7 +29,7 @@ export const ConfigTyping: FC<ConfigTypingProps> = ({ onDataSubmit }) => {
   };
 
   return (
-    <div className="card w-1/3  shadow-xl  bg-base-100 justify-center items-center p-8 rounded-lg border-2 border-primary border-b-4">
+    <div className="card   shadow-xl  bg-base-100 justify-center items-center p-8 rounded-lg border-2 border-primary border-b-4">
       {/* TITLE */}
       <h2 className="text-2xl text-secondary mb-4">
         Primero configuremos tu prueba
