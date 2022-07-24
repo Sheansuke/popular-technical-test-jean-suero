@@ -17,11 +17,11 @@ const Home: NextPage = () => {
           </p>
 
 
-          <p className="text-2xl font-bold mt-10 mb-4 ">
+          <p className="text-2xl font-bold mt-16 mb-4 ">
             Puedes elegir entre uno de estos textos rapidos de ejemplo
           </p>
 
-          <div className="flex gap-10">
+          <div className="flex gap-10 mt-8">
             <p className="card w-96 bg-base-100 shadow-xl p-4">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500</p>
             <p className="card w-96 bg-base-100 shadow-xl p-4">Al contrario del pensamiento popular, el texto de Lorem Ipsum no es simplemente texto aleatorio. Tiene sus raices.</p>
           </div>
