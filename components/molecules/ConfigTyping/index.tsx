@@ -11,7 +11,7 @@ const ConfigTypingContainer: FC = () => {
     const parseData = {
       paragraph:
         data?.paragraph === "custom"
-          ? data?.customParagraph
+          ? data?.customParagraph.trim()
           : randomParagraphGenerator(listWords, Number(data?.wordsCount)),
       timerMinutes:
         data?.timerMinutes === "custom"
