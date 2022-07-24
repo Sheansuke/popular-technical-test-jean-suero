@@ -6,7 +6,6 @@ export type ScoreType = {
   totalTime: string;
 };
 interface IScoreContext {
-  // MENU
   score: ScoreType
   setScore: (score: ScoreType) => void;
   clearScore: () => void;

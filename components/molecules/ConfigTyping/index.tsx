@@ -1,9 +1,12 @@
 import { randomParagraphGenerator } from "@utils/randomParagraphGenerator";
 import { listWords } from "@data/listWords";
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import { ConfigTyping, FormValues } from "./ConfigTyping";
+import { ConfigContext } from "@context/TypingConfigs";
+import Router from "next/router";
 
 const ConfigTypingContainer: FC = () => {
+  const { setConfigs } = useContext(ConfigContext);
   const handleSubmit = (data: FormValues) => {
     const parseData = {
       paragraph:
@@ -16,7 +19,8 @@ const ConfigTypingContainer: FC = () => {
           : data?.timerMinutes,
     };
 
-    console.log(parseData);
+    setConfigs(parseData);
+    Router.push("/typing");
   };
 
   return (
