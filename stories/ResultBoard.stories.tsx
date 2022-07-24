@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { ResultBoard } from "@molecules/ResultBoard";
+import { ResultBoard } from "@molecules/ScoreBoard";
 
 export default {
   title: "Keyboard/ResultBoard",

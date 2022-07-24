@@ -17,7 +17,7 @@ export const ResultBoard: FC<ResultBoardProps> = ({
 
       {/* DETAILS */}
       <div className="text-center">
-        <p className="text-xl p-1">Precision: {precision} </p>
+        <p className="text-xl p-1">Precision: {precision}% </p>
         <p className="text-xl p-1">Puntuacion: {score}</p>
         <p className="text-xl p-1">Tiempo total: {totalTime}</p>
       </div>
