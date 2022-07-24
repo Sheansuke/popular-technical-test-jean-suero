@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-export const useTimer = (maxMinutes: number) => {
+export const useTimer = (maxMinutes: number, listenChange: any) => {
   const [timerTemplate, setTimerTemplate] = useState<string>("0:00");
   const [isFinished, setIsFinished] = useState<boolean>(false);
   const [timer, setTimer] = useState<{
@@ -14,6 +14,13 @@ export const useTimer = (maxMinutes: number) => {
   const stopTimer = () => {
     setIsFinished(true);
   };
+
+  useEffect(() => {
+    setTimer(preState => ({
+      ...preState,
+      minutes: maxMinutes,
+    }))
+  }, [listenChange]);
 
   useEffect(() => {
     if (isFinished) return () => clearInterval(timerCount);
@@ -54,6 +61,6 @@ export const useTimer = (maxMinutes: number) => {
       minutes: maxMinutes - 1 - timer?.minutes,
       seconds: 59 - timer?.seconds,
     },
-    stopTimer
+    stopTimer,
   };
 };
