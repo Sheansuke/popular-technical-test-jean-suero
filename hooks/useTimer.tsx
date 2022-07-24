@@ -7,11 +7,16 @@ export const useTimer = (maxMinutes: number) => {
     seconds: number;
     minutes: number;
   }>({
-    seconds: 59,
+    seconds: 0,
     minutes: maxMinutes,
   });
 
+  const stopTimer = () => {
+    setIsFinished(true);
+  };
+
   useEffect(() => {
+    if (isFinished) return () => clearInterval(timerCount);
     const timerCount = setInterval(() => {
       if (timer?.minutes === 0 && timer?.seconds === 0) {
         setTimerTemplate("0:00");
@@ -45,5 +50,10 @@ export const useTimer = (maxMinutes: number) => {
     timerTemplate,
     isFinished,
     timer,
+    timeElapsed: {
+      minutes: maxMinutes - 1 - timer?.minutes,
+      seconds: 59 - timer?.seconds,
+    },
+    stopTimer
   };
 };
