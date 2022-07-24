@@ -17,5 +17,7 @@ Default.args = {
     paragraph: "esto no es un parrafo de prueba",
     statusLettersList: [false,true],
     currentLetterPosition: 0,
-    pulsedKey: ""
+    pulsedKey: {
+      letter: ""
+    }
 };
