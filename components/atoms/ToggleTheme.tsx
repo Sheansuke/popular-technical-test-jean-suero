@@ -19,9 +19,9 @@ export const ToggleTheme: FC<ToggleThemeProps> = ({ listTheme }) => {
         data-act-class="ACTIVECLASS"
         onClick={handleOnClick}
       >
-         <Image src="/static/assets/images/luna.png" alt="sol" width="25" height="25" />
+         <Image src="/assets/images/luna.png" alt="sol" width="25" height="25" />
         <input readOnly type="checkbox" className="toggle ml-1 mr-1" defaultChecked={isChecked} checked={isChecked} />
-        <Image src="/static/assets/images/sol.png" alt="sol" width="25" height="25" />
+        <Image src="/assets/images/sol.png" alt="sol" width="25" height="25" />
       </button>
     </>
   );

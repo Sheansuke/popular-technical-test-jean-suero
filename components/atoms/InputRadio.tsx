@@ -8,8 +8,8 @@ interface InputRadioProps {
 
 export const InputRadio: FC<InputRadioProps> = ({value, label, rest }) => {
   return (
-    <div>
-      <input {...rest} type="radio" value={value} /> <span>{label ?? ""}</span>
+    <div className="flex mt-2">
+      <input {...rest} type="radio" className="radio radio-secondary mr-1"  value={value} /> <span>{label ?? ""}</span>
     </div>
   );
 };
