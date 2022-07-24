@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { KeyButton } from "../components/atoms/KeyButton";
+import { KeyButton } from "@atoms/KeyButton";
 
 export default {
   title: "Keyboard/KeyButton",

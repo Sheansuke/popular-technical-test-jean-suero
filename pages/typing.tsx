@@ -1,18 +1,22 @@
-import { Keyboard } from "@organism/Keyboard";
+import { useTimer } from "@hooks/useTimer";
 import type { NextPage } from "next";
+import { useEffect } from "react";
+import TypingTest from "../components/organism/TypingTest";
 
 const TypingPage: NextPage = () => {
+  const { isFinished, timeElapsed, timerTemplate, stopTimer } = useTimer(2);
+
+  useEffect(() => {
+    if (isFinished) {
+      // Send context action
+      return stopTimer()
+    }
+  }, [isFinished]);
+
   return (
-    <div className="grid  grid-cols-1 ">
-      <p className="ml-10 text-xl">Tiempo: </p>
-      <div className="flex justify-center h-80 items-center">
-        <p>EL PEPES</p>
-      </div>
-      <div className="flex justify-center">
-        <Keyboard />
-        
-      </div>
-    </div>
+    <>
+      <TypingTest timerTemplate={timerTemplate} stopTimer={stopTimer} timeIsFinished={isFinished} timeElapsed={timeElapsed} />
+    </>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Keyboard } from "../components/organism/Keyboard";
+import { Keyboard } from "@organism/Keyboard";
 
 export default {
   title: "Keyboard/Keyboard",

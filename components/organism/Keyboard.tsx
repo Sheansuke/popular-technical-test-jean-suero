@@ -1,9 +1,13 @@
 import { KeyType } from "@interfaces/KeyType";
 import { KeyButtonsRow } from "@molecules/KeyButtonsRow";
+import { PulsedKeyType } from "@molecules/TypingParagraph";
 import React, { FC, useState, useEffect } from "react";
 
+interface KeyboardProps {
+  onPulseKey?: (keyPressed: PulsedKeyType) => void;
+}
 
-export const Keyboard: FC = () => {
+export const Keyboard: FC<KeyboardProps> = ({ onPulseKey }) => {
   const [keyPressed, setKeyPressed] = useState<string>();
   const [capsLockActive, setCapsLockActive] = useState<boolean>(false);
 
@@ -18,6 +22,7 @@ export const Keyboard: FC = () => {
       const capsIsOn = e.getModifierState("CapsLock");
       setCapsLockActive(capsIsOn);
       setKeyPressed(e?.key);
+      onPulseKey && onPulseKey({ letter: e?.key });
     };
   }, []);
 
