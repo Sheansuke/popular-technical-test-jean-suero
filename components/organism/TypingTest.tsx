@@ -1,4 +1,4 @@
-import { ScoreContext } from "@context/Score";
+import { ScoreContext, ScoreType } from "@context/Score";
 import { UIContext } from "@context/Ui";
 import {
   PulsedKeyType,
@@ -29,21 +29,30 @@ const TypingTest: FC<TypingTest> = ({
   const [pulsedKey, setPulsedKey] = useState<{ letter: string }>({
     letter: "",
   });
+  const [prepareScore, setPrepareScore] = useState<ScoreType>({
+    precision: 0,
+    score: 0,
+    totalTime: "0:00",
+  });
 
   const handlePulsedKey = (keyPressed: PulsedKeyType) => {
     setPulsedKey(keyPressed);
   };
 
   const handleOnPulseKey = (status: TypingParagraphStatus) => {
-    const positivePoints = statusLettersList?.filter(value => value === true).length + 1
-    const totalWords = testParagraph?.split("").length
+    const positivePoints =
+      statusLettersList?.filter((value) => value === true).length + 1;
+    const totalWords = testParagraph?.split("").length;
+    const prePrecision = Math.round((positivePoints / totalWords) * 100);
+    const templateTotalTime = `0${timeElapsed?.minutes}:${timeElapsed?.seconds}`;
+    setPrepareScore({
+      precision: prePrecision,
+      score: positivePoints,
+      totalTime: templateTotalTime,
+    });
 
     if (status?.isLettersEnd) {
-      setScore({
-        precision: Math.round(( positivePoints  / totalWords ) * 100),
-        score:positivePoints ,
-        totalTime: `0${timeElapsed?.minutes}:${timeElapsed?.seconds}`
-      })
+      setScore(prepareScore);
       openScoreModal();
       return stopTimer();
     }
@@ -55,6 +64,7 @@ const TypingTest: FC<TypingTest> = ({
 
   useEffect(() => {
     if (timeIsFinished) {
+      setScore(prepareScore);
       openScoreModal();
       return stopTimer();
     }
