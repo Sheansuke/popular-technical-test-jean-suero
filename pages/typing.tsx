@@ -5,11 +5,16 @@ import TypingTest from "../components/organism/TypingTest";
 import { ResultBoard } from "../components/molecules/ScoreBoard";
 import { UIContext } from "../context/Ui/UIContext";
 import { ScoreContext } from "../context/Score/ScoreContext";
+import { ConfigContext } from "../context/TypingConfigs/ConfigContext";
 
 const TypingPage: NextPage = () => {
   const { scoreModalOpen } = useContext(UIContext);
+  const { configs } = useContext(ConfigContext);
+
   const { score } = useContext(ScoreContext);
-  const { isFinished, timeElapsed, timerTemplate, stopTimer } = useTimer(1);
+  const { isFinished, timeElapsed, timerTemplate, stopTimer } = useTimer(
+    Number(configs?.timerMinutes), configs
+  );
 
   return (
     <>

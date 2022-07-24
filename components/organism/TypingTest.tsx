@@ -1,4 +1,5 @@
 import { ScoreContext, ScoreType } from "@context/Score";
+import { ConfigContext } from "@context/TypingConfigs";
 import { UIContext } from "@context/Ui";
 import {
   PulsedKeyType,
@@ -7,8 +8,6 @@ import {
 } from "@molecules/TypingParagraph";
 import { Keyboard } from "@organism/Keyboard";
 import { FC, useContext, useEffect, useState } from "react";
-
-const testParagraph = "Lorem Ipsum es simplemente el texto";
 
 interface TypingTest {
   timerTemplate: string;
@@ -23,6 +22,8 @@ const TypingTest: FC<TypingTest> = ({
   timeIsFinished,
   timeElapsed,
 }) => {
+  
+  const { configs } = useContext(ConfigContext);
   const { openScoreModal } = useContext(UIContext);
   const { setScore } = useContext(ScoreContext);
   const [statusLettersList, setStatusLettersList] = useState<boolean[]>([]);
@@ -35,22 +36,28 @@ const TypingTest: FC<TypingTest> = ({
     totalTime: "0:00",
   });
 
+  // GET KEYBOARD PULSED KEY
   const handlePulsedKey = (keyPressed: PulsedKeyType) => {
     setPulsedKey(keyPressed);
   };
 
+  // GET STATUS OF TYPINGPARAGRAPH COMPONENT
   const handleOnPulseKey = (status: TypingParagraphStatus) => {
+    // get total of success words
     const positivePoints =
       statusLettersList?.filter((value) => value === true).length + 1;
-    const totalWords = testParagraph?.split("").length;
+
+    const totalWords = configs?.paragraph?.split("").length;
     const prePrecision = Math.round((positivePoints / totalWords) * 100);
-    const templateTotalTime = `0${timeElapsed?.minutes}:${timeElapsed?.seconds}`;
+    const templateTotalTime = `0${timeElapsed?.minutes}:${timeElapsed?.seconds <= 9 ? "0" : ''}${timeElapsed?.seconds}`;
+
     setPrepareScore({
       precision: prePrecision,
       score: positivePoints,
       totalTime: templateTotalTime,
     });
 
+    // WHEN USER TYPING ALL WORDS
     if (status?.isLettersEnd) {
       setScore(prepareScore);
       openScoreModal();
@@ -62,6 +69,7 @@ const TypingTest: FC<TypingTest> = ({
     ]);
   };
 
+  // WHEN TIMER IS FINISHED
   useEffect(() => {
     if (timeIsFinished) {
       setScore(prepareScore);
@@ -76,7 +84,7 @@ const TypingTest: FC<TypingTest> = ({
       <div className="flex justify-center h-80  items-center  ">
         <TypingParagraph
           pulsedKey={pulsedKey}
-          paragraph={testParagraph}
+          paragraph={configs?.paragraph}
           onPulsedKey={handleOnPulseKey}
           statusLettersList={statusLettersList}
           safeKeys={[

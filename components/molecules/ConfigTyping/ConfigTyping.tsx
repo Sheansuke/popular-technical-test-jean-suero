@@ -1,6 +1,6 @@
 import { InputRadio } from "@atoms/InputRadio";
 import { FC } from "react";
-import { useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";import { ConfigContext } from '../../../context/TypingConfigs/ConfigContext';
 
 interface ConfigTypingProps {
   onDataSubmit?: (data: FormValues) => void;
@@ -31,6 +31,8 @@ export const ConfigTyping: FC<ConfigTypingProps> = ({ onDataSubmit }) => {
   const onSubmit = (data: FormValues) => {
     onDataSubmit && onDataSubmit(data);
   };
+
+
 
   return (
     <div className="card   shadow-xl  bg-base-100 justify-center items-center p-8 rounded-lg border-2 border-primary border-b-4">
@@ -74,7 +76,7 @@ export const ConfigTyping: FC<ConfigTypingProps> = ({ onDataSubmit }) => {
             </h2>
             <textarea
               {...register("customParagraph", { required: true })}
-              className="rounded-md w-full h-32"
+              className="rounded-md w-full h-32 border-2 border-base-900"
             />
           </div>
         )}
@@ -108,21 +110,21 @@ export const ConfigTyping: FC<ConfigTypingProps> = ({ onDataSubmit }) => {
             {watch("timerMinutes") === "custom" && (
               <input
                 type="number"
-                {...register("customTimerMinutes", { required: true })}
-                className="w-10 rounded-sm ml-2"
+                {...register("customTimerMinutes", { required: true, min: 1 })}
+                className="w-10 rounded-sm ml-2 border-2 border-base-900"
               />
             )}
           </div>
         </div>
         {/* BUTTON */}
         <div className="text-center mt-2 ">
-          <button type="submit" className="btn btn-primary ">
+          <button type="submit" className="btn btn-primary w-60 mt-4 ">
             Empezar
           </button>
 
           {hasError && (
             <p className="mt-2 text-error">
-              Parece que te faltan algunos campos, revisa bien!
+              ¡Parece que te faltan algunos campos, o has configurado algo mal revisa bien!
             </p>
           )}
         </div>
