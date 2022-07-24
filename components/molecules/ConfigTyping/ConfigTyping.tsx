@@ -20,7 +20,11 @@ export const ConfigTyping: FC<ConfigTypingProps> = ({ onDataSubmit }) => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<FormValues>();
+  } = useForm<FormValues>({
+    defaultValues: {
+      paragraph: "custom",
+    },
+  });
 
   const hasError = Boolean(Object.keys(errors)[0]);
 
@@ -37,28 +41,28 @@ export const ConfigTyping: FC<ConfigTypingProps> = ({ onDataSubmit }) => {
 
       <form onSubmit={handleSubmit(onSubmit)} className=" w-96 ">
         {/* PARAGRAPH */}
-        <h2 className="text-xl text-center font-bold">
-          Que tipo de parrafo quieres?
+        <h2 className="text-xl text-center font-bold mb-1">
+          ¿Qué tipo de párrafo quieres?
         </h2>
         <InputRadio
-          label="Parrafo aleatorio"
+          label=" Párrafo aleatorio"
           value="random"
           rest={{ ...register("paragraph", { required: true }) }}
         />
         {watch("paragraph") === "random" && (
           <>
-            <span>Cantidad de palabras a utilizar (minimo: 5): </span>
+            <span>Cantidad de palabras a utilizar (mínimo: 5): </span>
             <input
               type="number"
               defaultValue="5"
               {...register("wordsCount", { required: true, min: 5 })}
-              className="w-10 rounded-sm ml-2"
+              className="w-10 rounded-sm ml-2 mb-2"
             />
           </>
         )}
 
         <InputRadio
-          label="Quiero usar mi propio parrafo"
+          label="Quiero usar mi propio párrafo"
           value="custom"
           rest={{ ...register("paragraph", { required: true }) }}
         />
@@ -66,7 +70,7 @@ export const ConfigTyping: FC<ConfigTypingProps> = ({ onDataSubmit }) => {
         {watch("paragraph") === "custom" && (
           <div className="text-center  mt-2 ">
             <h2 className="text-lg font-bold">
-              Escribe aqui el parrafo que quieres utilizar
+              Escribe aquí el párrafo que quieres utilizar
             </h2>
             <textarea
               {...register("customParagraph", { required: true })}
