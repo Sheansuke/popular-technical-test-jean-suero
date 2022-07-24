@@ -58,7 +58,7 @@ export const ConfigTyping: FC<ConfigTypingProps> = ({ onDataSubmit }) => {
               type="number"
               defaultValue="5"
               {...register("wordsCount", { required: true, min: 5 })}
-              className="w-10 rounded-sm ml-2 mb-2"
+              className="w-10 rounded-sm ml-2 mb-2 text-secondary"
             />
           </>
         )}
@@ -76,7 +76,7 @@ export const ConfigTyping: FC<ConfigTypingProps> = ({ onDataSubmit }) => {
             </h2>
             <textarea
               {...register("customParagraph", { required: true })}
-              className="rounded-md w-full h-32 border-2 border-base-900"
+              className="rounded-md w-full h-32 border-2 border-base-900 text-secondary"
             />
           </div>
         )}
@@ -111,7 +111,7 @@ export const ConfigTyping: FC<ConfigTypingProps> = ({ onDataSubmit }) => {
               <input
                 type="number"
                 {...register("customTimerMinutes", { required: true, min: 1 })}
-                className="w-10 rounded-sm ml-2 border-2 border-base-900"
+                className="w-10 rounded-sm ml-2 border-2 border-base-900 "
               />
             )}
           </div>
@@ -124,7 +124,7 @@ export const ConfigTyping: FC<ConfigTypingProps> = ({ onDataSubmit }) => {
 
           {hasError && (
             <p className="mt-2 text-error">
-              ¡Parece que te faltan algunos campos, o has configurado algo mal revisa bien!
+              ¡Debes completar todos los campos requeridos, verifica la configuración nuevamente!
             </p>
           )}
         </div>

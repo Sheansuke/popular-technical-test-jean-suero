@@ -5,13 +5,13 @@ const Home: NextPage = () => {
   return (
     <div>
       <div className="  flex justify-around mt-20  relative">
-        <div className="max-w-2xl    ">
+        <div className="max-w-2xl text-center   ">
           <p className="text-5xl  font-bold  ">
             Bienvenido a esta prueba técnica la cual consta de un sistema de
             mecanografía
           </p>
 
-          <p className="text-lg mt-4 max-w-xl ">
+          <p className="text-lg mt-4  ">
             Para comenzar la prueba primero elige la configuración deseada, en
             el panel de la derecha {`-->`}
           </p>
